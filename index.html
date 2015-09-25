@@ -23,6 +23,7 @@ var init = function () {
     success: function() {
       document.getElementById('before-image').src = this.photo.originalBase64;
       document.getElementById('after-image').src = this.photo.base64;
+      document.getElementById('error').innerHTML = '';
       console.log(this);
     },
     failure: function() {
