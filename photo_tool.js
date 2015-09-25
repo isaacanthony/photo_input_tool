@@ -72,7 +72,11 @@ var PhotoInputTool = (function() {
       var ctx = canvas.getContext('2d');
       ctx.fillStyle = '#000000';
       ctx.fillRect(0, 0, MIN_SIZE, MIN_SIZE);
-      ctx.drawImage(context.image, 0, 0, context.photo.width, context.photo.height);
+
+      var imageX = Math.round((MIN_SIZE / 2) - (context.photo.width / 2));
+      var imageY = Math.round((MIN_SIZE / 2) - (context.photo.height / 2));
+
+      ctx.drawImage(context.image, imageX, imageY, context.photo.width, context.photo.height);
       var dataURL = canvas.toDataURL(context.photo.type);
 
       if (!dataURL) {
