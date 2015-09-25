@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Photo Tool</title>
+  <style>#error{color:red;}</style>
+</head>
+<body>
+<h1>Upload File</h1>
+
+<input type="file" id="file-input" />
+<br><br>
+<button onclick="init()">Submit</button>
+<p id="error"></p>
+<img id="before-image" />
+<img id="after-image" />
+
+<script src="photo_tool.js"></script>
+<script>
+var init = function () {
+  PhotoInputTool.process({
+    fileId: 'file-input',
+    success: function() {
+      document.getElementById('before-image').src = this.photo.originalBase64;
+      document.getElementById('after-image').src = this.photo.base64;
+      console.log(this);
+    },
+    failure: function() {
+      document.getElementById('error').innerHTML = this.error;
+      console.log(this);
+    }
+  });
+};
+</script>
+</body>
+</html>
